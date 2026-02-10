@@ -45,6 +45,22 @@ python3 usdt_flasher.py
 
 ## Usage
 
+### Quick Demo
+
+Run the demo program to see all features:
+
+```bash
+python3 usdt_flasher.py
+```
+
+### Examples
+
+Run the examples script to see common usage patterns:
+
+```bash
+python3 examples.py
+```
+
 ### Basic Usage
 
 Run the demo program:
