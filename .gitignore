@@ -1,6 +1,6 @@
 # Generated transaction files
-simulated_transactions.json
-*.json
+*_transactions.json
+simulated_*.json
 
 # Python cache
 __pycache__/

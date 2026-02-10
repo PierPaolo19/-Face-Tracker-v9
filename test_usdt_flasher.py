@@ -113,24 +113,26 @@ def test_export_functionality():
     
     # Export to test file
     test_file = "test_export.json"
-    flasher.export_transactions(test_file)
     
-    # Test 1: File exists
-    assert os.path.exists(test_file), "Export file should be created"
-    print("  ✓ Export file is created")
-    
-    # Test 2: File content is valid JSON
-    with open(test_file, 'r') as f:
-        data = json.load(f)
-    assert "warning" in data, "Export should include warning"
-    assert "transactions" in data, "Export should include transactions"
-    assert len(data["transactions"]) == 2, "Should export all transactions"
-    print("  ✓ Export file contains valid JSON")
-    
-    # Cleanup
-    if os.path.exists(test_file):
-        os.remove(test_file)
-    print("  ✓ Cleanup completed")
+    try:
+        flasher.export_transactions(test_file)
+        
+        # Test 1: File exists
+        assert os.path.exists(test_file), "Export file should be created"
+        print("  ✓ Export file is created")
+        
+        # Test 2: File content is valid JSON
+        with open(test_file, 'r') as f:
+            data = json.load(f)
+        assert "warning" in data, "Export should include warning"
+        assert "transactions" in data, "Export should include transactions"
+        assert len(data["transactions"]) == 2, "Should export all transactions"
+        print("  ✓ Export file contains valid JSON")
+    finally:
+        # Cleanup in finally block to ensure it runs even if tests fail
+        if os.path.exists(test_file):
+            os.remove(test_file)
+        print("  ✓ Cleanup completed")
     
     print("✓ All export tests passed!\n")
 

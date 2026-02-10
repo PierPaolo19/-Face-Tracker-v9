@@ -16,7 +16,7 @@ Purpose: Educational demonstration of cryptocurrency transaction concepts
 """
 
 import json
-import random
+import secrets
 import hashlib
 import time
 from datetime import datetime
@@ -31,8 +31,10 @@ class USDTFlasher:
         self.wallet_addresses = {}
         
     def generate_wallet_address(self, owner_name: str = "User") -> str:
-        """Generate a mock wallet address"""
-        random_part = ''.join(random.choices('0123456789abcdef', k=40))
+        """Generate a mock wallet address using secure random generation"""
+        # Using secrets module for cryptographically secure random generation
+        # This demonstrates best practices even in educational context
+        random_part = secrets.token_hex(20)  # 20 bytes = 40 hex characters
         address = f"0x{random_part}"
         self.wallet_addresses[owner_name] = address
         return address
